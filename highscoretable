@@ -1,0 +1,51 @@
+Game Maker: Creating a High Score Table
+Step 1: Getting the name variable
+● Name basic room rmGame
+● Duplicate room, rename it to rmName, remove objects, move it FIRST
+● Create a new object obGetName
+● In ObGetName, Create ­> Execute code:
+// Create a global variable “name” from a user input
+globalvar (global.Name) = get_string("Name","");
+● Create a KeyPress ­> Space event, and put a go to next room action.
+● Put obGetName in rmName. Make sure that rmName is the first on the list of rooms.
+● Create a new sprite. go to edit sprite and put the text Press Space to Continue.
+● Create a new object with this sprite and put in rmName, to tell the player to press space
+to go to the next room.
+Step 2: Adding the High Score
+● Create a new Object obHighscoreControl
+● Step ­> Execute code:
+if lives = 0
+{
+highscore_add(global.Name, score);
+room_goto(rmHighscore);
+}
+● Place obHighscoreControl in rmGame
+● In obDragon Create ­> Set Lives = 1
+● In obDemon Change Collision Dragon ­> to Set Lives =0
+Step 3: Drawing the High Score Table
+● Duplicate rmGame, name it rmHighscore, remove objects, make sure it is LAST
+Here’s the moment of triumph! You are now ready to create the high score table itself.
+● Create a new Object obTablecontrol
+● Create ­>Execute Code:
+var i;
+i = 10;
+repeat(10)
+{
+name[i] = highscore_name(i);
+i ­= 1;
+}
+var i;
+i = 10;
+repeat(10)
+{
+scr[i] = highscore_value(i);
+i ­= 1;
+}
+● Draw ­> Execute Code Action:
+draw_highscore(100, 100, room_width ­ 100, room_height ­ 100);
+● Place obTablecontrol in rmHighscore
+● Add a Restart Game Button and send it to rmName
+Step 4: Cleaning up the Table (optional)
+● Want to clear the table, add another button called obCleartable with spCleartable and
+Mouse Left Press ­> Execute code:
+highscore_clear();
