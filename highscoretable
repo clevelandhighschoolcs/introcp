@@ -1,4 +1,4 @@
-Game Maker: Creating a High Score Table
+# Game Maker: Creating a High Score Table
 Step 1: Getting the name variable
 ● Name basic room rmGame
 ● Duplicate room, rename it to rmName, remove objects, move it FIRST
